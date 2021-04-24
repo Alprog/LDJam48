@@ -1,34 +1,44 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
+
 using UnityEngine;
 
 public class Enemy : CircleObject
 {
-    public static float MaxVelocity = 300;
-    public static float MaxForce = 100;
-    public static float MaxSpeed = 300;
-    public static float Mass = 100;
+    public static float SeparateDistance = 100;
 
-    public virtual void FixedUpdate()
+    public override void CalculateSteeringForce(CircleObject[] circleObjects)
     {
-        var targetPosition = Hero.Instance.Position;
-        var desiredVelocity = (targetPosition - Position).normalized * MaxVelocity;
-        var steering = desiredVelocity - Velocity;
+        var seekForce = Vector2.zero;
+        var separationForce = Vector2.zero;
 
-        steering = Truncate(steering, MaxVelocity);
-        steering /= Mass;
-
-        Velocity = Truncate(Velocity + steering, MaxSpeed);
-        Position += Velocity * Time.deltaTime;
-    }
-
-    public Vector2 Truncate(Vector2 vector, float maxMagnitude)
-    {
-        var k = vector.magnitude / maxMagnitude;
-        if (k > 1)
+        foreach (var circle in circleObjects)
         {
-            return vector / k;
+            if (circle == this)
+            {
+                // nothing
+            }
+            else if (circle is Hero)
+            {
+                var targetPosition = circle.Position;
+                var desiredVelocity = (targetPosition - Position).normalized * MaxVelocity;
+                seekForce = desiredVelocity - Velocity;
+            }
+            else if (circle is Enemy)
+            {
+                var delta = this.Position - circle.Position;
+                var distance = delta.magnitude;
+                if (distance < SeparateDistance)
+                {
+                    var r = distance / SeparateDistance;
+                    separationForce += delta.normalized * Mathf.Lerp(1000, 0, r * r);
+                }
+            }
         }
-        return vector;
+
+        Debug.Log(seekForce.magnitude + " " + separationForce.magnitude);
+
+        SteeringForce = seekForce + separationForce;
+        SteeringForce = SteeringForce.Truncate(MaxForce);
+        SteeringForce /= Mass;
     }
 }
