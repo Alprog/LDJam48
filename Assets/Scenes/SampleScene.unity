@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 11694802}
   - component: {fileID: 11694804}
   - component: {fileID: 11694803}
+  - component: {fileID: 11694805}
   m_Layer: 5
   m_Name: Enemy
   m_TagString: Untagged
@@ -195,6 +196,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 11694801}
   m_CullTransparentMesh: 0
+--- !u!114 &11694805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 11694801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43b0fb879c125794eb5fbdefe14fe7cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Radius: 20
+  Position: {x: 0, y: 0}
 --- !u!1 &345134335
 GameObject:
   m_ObjectHideFlags: 0
@@ -239,6 +254,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HeroSpeed: 300
+  CircleSprite: {fileID: 21300000, guid: 051d27b1f34f84b4cbde5bd246c4813a, type: 3}
 --- !u!1 &452938386
 GameObject:
   m_ObjectHideFlags: 0
@@ -250,6 +266,7 @@ GameObject:
   - component: {fileID: 452938387}
   - component: {fileID: 452938389}
   - component: {fileID: 452938388}
+  - component: {fileID: 452938390}
   m_Layer: 5
   m_Name: Gnome
   m_TagString: Untagged
@@ -313,6 +330,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 452938386}
   m_CullTransparentMesh: 0
+--- !u!114 &452938390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 452938386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43b0fb879c125794eb5fbdefe14fe7cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Radius: 15
+  Position: {x: 0, y: 0}
 --- !u!1 &482920536
 GameObject:
   m_ObjectHideFlags: 0
@@ -324,6 +355,7 @@ GameObject:
   - component: {fileID: 482920537}
   - component: {fileID: 482920539}
   - component: {fileID: 482920538}
+  - component: {fileID: 482920540}
   m_Layer: 5
   m_Name: Enemy
   m_TagString: Untagged
@@ -387,6 +419,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 482920536}
   m_CullTransparentMesh: 0
+--- !u!114 &482920540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 482920536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43b0fb879c125794eb5fbdefe14fe7cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Radius: 20
+  Position: {x: 0, y: 0}
 --- !u!1 &486829339
 GameObject:
   m_ObjectHideFlags: 0
@@ -636,6 +682,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43b482975d14324468dde18fe290696d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Radius: 30
+  Position: {x: 0, y: 0}
 --- !u!1 &731167588
 GameObject:
   m_ObjectHideFlags: 0
@@ -809,6 +857,7 @@ GameObject:
   - component: {fileID: 1051396343}
   - component: {fileID: 1051396345}
   - component: {fileID: 1051396344}
+  - component: {fileID: 1051396346}
   m_Layer: 5
   m_Name: Gnome
   m_TagString: Untagged
@@ -872,6 +921,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1051396342}
   m_CullTransparentMesh: 0
+--- !u!114 &1051396346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1051396342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43b0fb879c125794eb5fbdefe14fe7cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Radius: 15
+  Position: {x: 0, y: 0}
 --- !u!1 &1205007103
 GameObject:
   m_ObjectHideFlags: 0
@@ -883,6 +946,7 @@ GameObject:
   - component: {fileID: 1205007104}
   - component: {fileID: 1205007106}
   - component: {fileID: 1205007105}
+  - component: {fileID: 1205007107}
   m_Layer: 5
   m_Name: Enemy
   m_TagString: Untagged
@@ -946,6 +1010,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1205007103}
   m_CullTransparentMesh: 0
+--- !u!114 &1205007107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1205007103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43b0fb879c125794eb5fbdefe14fe7cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Radius: 20
+  Position: {x: 0, y: 0}
 --- !u!1 &1608166467
 GameObject:
   m_ObjectHideFlags: 0

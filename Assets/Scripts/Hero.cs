@@ -1,24 +1,25 @@
 ﻿
 using UnityEngine;
 
-public class Hero : MonoBehaviour
+public class Hero : CircleObject
 {
-    void Update()
+    public override void Update()
     {
+        base.Update();
         UpdateMovement();
     }
 
     void UpdateMovement()
     {
-        var direction = Vector3.zero;
+        var direction = Vector2.zero;
         if (Input.GetKey(KeyCode.D)) direction.x += 1;
         if (Input.GetKey(KeyCode.A)) direction.x -= 1;
         if (Input.GetKey(KeyCode.W)) direction.y += 1;
         if (Input.GetKey(KeyCode.S)) direction.y -= 1;
 
-        if (direction != Vector3.zero)
+        if (direction != Vector2.zero)
         {
-            transform.position += direction * Time.deltaTime * Config.Instance.HeroSpeed;
+            Position += direction * Time.deltaTime * Config.Instance.HeroSpeed;
         }
     }
 }
