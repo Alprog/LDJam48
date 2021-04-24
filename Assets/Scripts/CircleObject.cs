@@ -4,13 +4,15 @@ using UnityEngine.UI;
 
 public class CircleObject : MonoBehaviour
 {
+    public float Mass;
     public float Radius;
     public Vector2 Position;
+    public Vector2 Velocity;
 
     private Image Gizmo;
     private RectTransform GizmoRectTransform;
 
-    public void Start()
+    public virtual void Start()
     {
         Position = transform.position;
 
@@ -26,5 +28,8 @@ public class CircleObject : MonoBehaviour
     {
         transform.position = Position;
         GizmoRectTransform.sizeDelta = new Vector2(2, 2) * Radius;
+
+        var rotation = Mathf.Atan2(Velocity.y, Velocity.x);
+        Gizmo.transform.localRotation = Quaternion.Euler(0, 0, rotation * Mathf.Rad2Deg);
     }
 }
