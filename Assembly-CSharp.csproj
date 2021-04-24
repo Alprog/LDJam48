@@ -67,9 +67,11 @@
     <Compile Include="Assets\Scripts\AspectChanger.Editor.cs" />
     <Compile Include="Assets\Scripts\AspectChanger.cs" />
     <Compile Include="Assets\Scripts\CanvasCamera.cs" />
+    <Compile Include="Assets\Scripts\CircleManager.cs" />
     <Compile Include="Assets\Scripts\CircleObject.cs" />
     <Compile Include="Assets\Scripts\Config.cs" />
     <Compile Include="Assets\Scripts\Enemy.cs" />
+    <Compile Include="Assets\Scripts\Extensions.cs" />
     <Compile Include="Assets\Scripts\Ground.cs" />
     <Compile Include="Assets\Scripts\Hero.cs" />
     <Compile Include="Assets\Scripts\SortObjects.cs" />

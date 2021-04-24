@@ -4,10 +4,19 @@ using UnityEngine.UI;
 
 public class CircleObject : MonoBehaviour
 {
-    public float Mass;
+    public static float MaxVelocity = 300;
+    public static float MaxForce = 900;
+
+    public static float MaxSpeed = 300; // pixels per seconds
+    public static float Inertness = 1; // time to full stop 
+    
+    public static float Mass = 3;
+
     public float Radius;
     public Vector2 Position;
     public Vector2 Velocity;
+
+    protected Vector2 SteeringForce;
 
     private Image Gizmo;
     private RectTransform GizmoRectTransform;
@@ -31,5 +40,16 @@ public class CircleObject : MonoBehaviour
 
         var rotation = Mathf.Atan2(Velocity.y, Velocity.x);
         Gizmo.transform.localRotation = Quaternion.Euler(0, 0, rotation * Mathf.Rad2Deg);
+    }
+
+    public virtual void CalculateSteeringForce(CircleObject[] circleObjects)
+    {
+        SteeringForce = Vector2.zero;
+    }
+
+    public void ApplyMotion()
+    {
+        Velocity = (Velocity + SteeringForce * Time.deltaTime).Truncate(MaxSpeed);
+        Position += Velocity * Time.deltaTime;
     }
 }
