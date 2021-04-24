@@ -15,8 +15,8 @@ public class AspectChanger : MonoBehaviour
         set
         {
             var rectTransform = GetComponent<RectTransform>();
-            var height = rectTransform.sizeDelta.y;
-            var width = height * value;
+            var width = rectTransform.sizeDelta.x;
+            var height = width / value;
             rectTransform.sizeDelta = new Vector2(width, height);
         }
     }
