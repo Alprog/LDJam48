@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class Enemy : Character
 {
+    public EnemyConfig EnemyConfig;
+
     public override void Start()
     {
         base.Start();
         BodyAnimation.Sheet = Config.Instance.EnemyRunSheet;
     }
 
-    public override void CalculateSteeringForce(CircleObject[] circleObjects)
+    public override void CalculateVelocity(CircleObject[] circleObjects)
     {
         var config = Config.Instance;
 
@@ -37,11 +39,11 @@ public class Enemy : Character
                 if (circle is Hero)
                 {
                     var targetPosition = circle.Position;
-                    var desiredVelocity = (targetPosition - Position).normalized * config.MaxEnemySpeed;
+                    var desiredVelocity = (targetPosition - Position).normalized * EnemyConfig.MaxSpeed;
                     seekForce = desiredVelocity - Velocity;
 
                     seekForce = seekForce.Truncate(config.SeekForce);
-                    seekForce /= config.EnemyMass;
+                    seekForce /= EnemyConfig.Mass;
                 }
             }
         }
@@ -51,5 +53,7 @@ public class Enemy : Character
         //SteeringForce /= config.Mass;
 
         SteeringForce *= Random.Range(0.95f, 1.05f);
+
+        Velocity = (Velocity + SteeringForce * Time.deltaTime).Truncate(EnemyConfig.MaxSpeed);
     }
 }

@@ -21,20 +21,7 @@ public class Hero : Character
         BodyAnimation.GetComponent<RectTransform>().localScale = new Vector3(XMirror ? -1 : 1, 1, 1);
     }
 
-    public override void CalculateSteeringForce(CircleObject[] circleObjects)
-    {
-        RefreshDirectionAndVelocity();
-
-        
-
-        if (Velocity != Vector2.zero)
-        {
-            var newPosition = Position + Velocity * Time.deltaTime;
-            Position = newPosition; 
-        }
-    }
-
-    public void RefreshDirectionAndVelocity()
+    public override void CalculateVelocity(CircleObject[] circleObjects)
     {
         var direction = Vector2.zero;
         if (Input.GetKey(KeyCode.D)) direction.x += 1;

@@ -3,16 +3,10 @@ using UnityEngine;
 
 public class WalkZone : MonoBehaviour
 {
-    public bool Obstacle;
+    public static WalkZone Instance;
 
-    public bool TestPoint(Vector2 point)
+    public void Start()
     {
-        bool contains = Contains(point);
-        return contains != Obstacle;
-    }
-
-    public bool Contains(Vector2 point)
-    {
-        return false;
+        Instance = this;
     }
 }

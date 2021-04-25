@@ -1,12 +1,12 @@
 ﻿
 using UnityEngine;
-using UnityEngine.UI;
 
 public class CircleObject : MonoBehaviour
 {
-    
     public static float Inertness = 1; // time to full stop 
-   
+
+    public CircleType Type;
+
     public float Radius;
     public Vector2 Position;
     public Vector2 Velocity;
@@ -29,14 +29,13 @@ public class CircleObject : MonoBehaviour
         transform.position = new Vector3(Position.x, Position.y * Config.Instance.VerticalScale, 0);
     }
 
-    public virtual void CalculateSteeringForce(CircleObject[] circleObjects)
+    public virtual void CalculateVelocity(CircleObject[] circleObjects)
     {
         SteeringForce = Vector2.zero;
     }
 
     public virtual void ApplyMotion()
     {
-        Velocity = (Velocity + SteeringForce * Time.deltaTime).Truncate(Config.Instance.MaxEnemySpeed);
         Position += Velocity * Time.deltaTime;
     }
 }
