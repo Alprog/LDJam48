@@ -21,6 +21,7 @@ public class Config : MonoBehaviour
 
     public List<Sprite> WhiteIdleSheet;
     public List<Sprite> GnomeIdleSheet;
+    public List<Sprite> EnemyRunSheet;
 
     public ShadowMode ShadowMode;
 

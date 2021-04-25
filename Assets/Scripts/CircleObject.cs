@@ -36,8 +36,6 @@ public class CircleObject : MonoBehaviour
 
     public virtual void ApplyMotion()
     {
-        SteeringForce *= Random.Range(0.95f, 1.05f);
-
         Velocity = (Velocity + SteeringForce * Time.deltaTime).Truncate(Config.Instance.MaxEnemySpeed);
         Position += Velocity * Time.deltaTime;
     }

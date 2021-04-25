@@ -2,8 +2,14 @@
 
 using UnityEngine;
 
-public class Enemy : CircleObject
+public class Enemy : Character
 {
+    public override void Start()
+    {
+        base.Start();
+        BodyAnimation.Sheet = Config.Instance.EnemyRunSheet;
+    }
+
     public override void CalculateSteeringForce(CircleObject[] circleObjects)
     {
         var config = Config.Instance;
@@ -43,5 +49,7 @@ public class Enemy : CircleObject
         SteeringForce = seekForce + separationForce;
         //SteeringForce = SteeringForce.Truncate(MaxForce);
         //SteeringForce /= config.Mass;
+
+        SteeringForce *= Random.Range(0.95f, 1.05f);
     }
 }
