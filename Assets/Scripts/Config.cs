@@ -1,4 +1,5 @@
 ﻿
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Config : MonoBehaviour
@@ -10,12 +11,16 @@ public class Config : MonoBehaviour
     public float SeekForce = 300;
     public float SeparateDistance = 100;
     public float AvoidForce = 1000;
-    public float Mass = 3;
+    public float MaxEnemySpeed = 300;
+    public float EnemyMass = 3;
 
     public float VerticalScale = 1;
 
     public Sprite CircleSprite;
     public Sprite ShadowSprite;
+
+    public List<Sprite> WhiteIdleSheet;
+
 
     public ShadowMode ShadowMode;
 
