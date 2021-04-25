@@ -1,11 +1,10 @@
 ﻿
 using UnityEngine;
 
-public class Hero : CircleObject
+public class Hero : Character
 {
     public static Hero Instance;
 
-    public Animation BodyAnimation;
     public Vector2 Direction = Vector2.right;
     public bool XMirror = false;
 
@@ -13,8 +12,6 @@ public class Hero : CircleObject
     {
         base.Start();
         Instance = this;
-
-        BodyAnimation = GetComponentInChildren<Animation>();
         BodyAnimation.Sheet = Config.Instance.WhiteIdleSheet;
     }
 
