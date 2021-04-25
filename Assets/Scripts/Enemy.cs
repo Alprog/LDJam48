@@ -20,7 +20,8 @@ public class Enemy : CircleObject
             else
             {
                 var delta = this.Position - circle.Position;
-                var distance = delta.magnitude;
+                var distance = delta.magnitude - Radius - circle.Radius;
+                distance = Mathf.Max(0, distance);
                 if (distance < config.SeparateDistance)
                 {
                     var r = distance / config.SeparateDistance;
