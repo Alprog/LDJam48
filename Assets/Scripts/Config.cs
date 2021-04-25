@@ -1,4 +1,5 @@
 ﻿
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Config : MonoBehaviour
@@ -17,6 +18,9 @@ public class Config : MonoBehaviour
 
     public Sprite CircleSprite;
     public Sprite ShadowSprite;
+
+    public List<Sprite> WhiteIdleSheet;
+
 
     public ShadowMode ShadowMode;
 

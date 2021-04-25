@@ -24,7 +24,7 @@ public class CircleObject : MonoBehaviour
         Shadow.SetCircleObject(this);
     }
 
-    public virtual void LateUpdate()
+    public virtual void FixedUpdate()
     {
         transform.position = new Vector3(Position.x, Position.y * Config.Instance.VerticalScale, 0);
     }
@@ -34,7 +34,7 @@ public class CircleObject : MonoBehaviour
         SteeringForce = Vector2.zero;
     }
 
-    public void ApplyMotion()
+    public virtual void ApplyMotion()
     {
         SteeringForce *= Random.Range(0.95f, 1.05f);
 
