@@ -1,7 +1,16 @@
 fileFormatVersion: 2
-guid: 4e2b8c7e93e719b4cace0557c45cccbb
+guid: 21b1a9438f8adf142b92ae1e04022e95
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -5284675044192198762
+    second: icon_globalmap_0
+  - first:
+      213: 673709899298604486
+    second: icon_globalmap_1
+  - first:
+      213: 8023580339782748665
+    second: icon_globalmap_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -40,17 +49,17 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteBorder: {x: 9, y: 173, z: 168, w: 11}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
-  spriteTessellationDetail: -1
+  spriteTessellationDetail: 0
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
@@ -85,8 +94,83 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
-    outline: []
+    sprites:
+    - serializedVersion: 2
+      name: icon_globalmap_0
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 172
+        width: 70
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69f5d85fb0019a6b0800000000000000
+      internalID: -5284675044192198762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icon_globalmap_1
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 173
+        width: 71
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c58b5d759f795900800000000000000
+      internalID: 673709899298604486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icon_globalmap_2
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 173
+        width: 69
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f90f8beecb795f60800000000000000
+      internalID: 8023580339782748665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline:
+    - - {x: -120, y: 42}
+      - {x: -120, y: 120}
+      - {x: -43, y: 120}
+      - {x: -43, y: 42}
+    - - {x: -37, y: 42}
+      - {x: -37, y: 121}
+      - {x: 37, y: 121}
+      - {x: 37, y: 42}
+    - - {x: 45, y: 43}
+      - {x: 45, y: 121}
+      - {x: 118, y: 121}
+      - {x: 118, y: 43}
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
