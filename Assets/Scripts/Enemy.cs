@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Enemy : CircleObject
 {
-    public static float SeparateDistance = 100;
-
     public override void CalculateSteeringForce(CircleObject[] circleObjects)
     {
+        var config = Config.Instance;
+
         var seekForce = Vector2.zero;
         var separationForce = Vector2.zero;
 
@@ -17,28 +17,30 @@ public class Enemy : CircleObject
             {
                 // nothing
             }
-            else if (circle is Hero)
-            {
-                var targetPosition = circle.Position;
-                var desiredVelocity = (targetPosition - Position).normalized * MaxVelocity;
-                seekForce = desiredVelocity - Velocity;
-            }
-            else if (circle is Enemy)
+            else
             {
                 var delta = this.Position - circle.Position;
                 var distance = delta.magnitude;
-                if (distance < SeparateDistance)
+                if (distance < config.SeparateDistance)
                 {
-                    var r = distance / SeparateDistance;
-                    separationForce += delta.normalized * Mathf.Lerp(1000, 0, r * r);
+                    var r = distance / config.SeparateDistance;
+                    separationForce += delta.normalized * Mathf.Lerp(config.AvoidForce, 0, r * r);
+                }
+
+                if (circle is Hero)
+                {
+                    var targetPosition = circle.Position;
+                    var desiredVelocity = (targetPosition - Position).normalized * MaxVelocity;
+                    seekForce = desiredVelocity - Velocity;
+
+                    seekForce = seekForce.Truncate(config.SeekForce);
+                    seekForce /= Mass;
                 }
             }
         }
 
-        Debug.Log(seekForce.magnitude + " " + separationForce.magnitude);
-
         SteeringForce = seekForce + separationForce;
-        SteeringForce = SteeringForce.Truncate(MaxForce);
-        SteeringForce /= Mass;
+        //SteeringForce = SteeringForce.Truncate(MaxForce);
+        //SteeringForce /= Mass;
     }
 }
