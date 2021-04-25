@@ -11,10 +11,10 @@ public class Hero : CircleObject
         Instance = this;
     }
 
-    public override void Update()
+    public override void LateUpdate()
     {
-        base.Update();
         UpdateMovement();
+        base.LateUpdate();
     }
 
     void UpdateMovement()

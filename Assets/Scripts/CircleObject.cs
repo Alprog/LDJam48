@@ -28,7 +28,7 @@ public class CircleObject : MonoBehaviour
         Shadow.SetCircleObject(this);
     }
 
-    public virtual void Update()
+    public virtual void LateUpdate()
     {
         transform.position = new Vector3(Position.x, Position.y * Config.Instance.VerticalScale, 0);
     }
