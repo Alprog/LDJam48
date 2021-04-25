@@ -20,7 +20,7 @@ public class Config : MonoBehaviour
     public Sprite ShadowSprite;
 
     public List<Sprite> WhiteIdleSheet;
-
+    public List<Sprite> GnomeIdleSheet;
 
     public ShadowMode ShadowMode;
 
