@@ -4,12 +4,12 @@ using System.Collections.Generic;
 
 public class Ground
 {
-    public List<Zone> Zones;
+    public List<WalkZone> Zones;
     
     public void RefreshZones()
     {
-        Zones = new List<Zone>();
-        foreach (var zone in GameObject.FindObjectsOfType<Zone>())
+        Zones = new List<WalkZone>();
+        foreach (var zone in GameObject.FindObjectsOfType<WalkZone>())
         {
             Zones.Add(zone);
         }

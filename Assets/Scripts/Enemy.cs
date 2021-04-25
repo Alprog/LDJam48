@@ -31,17 +31,17 @@ public class Enemy : CircleObject
                 if (circle is Hero)
                 {
                     var targetPosition = circle.Position;
-                    var desiredVelocity = (targetPosition - Position).normalized * MaxVelocity;
+                    var desiredVelocity = (targetPosition - Position).normalized * config.MaxEnemySpeed;
                     seekForce = desiredVelocity - Velocity;
 
                     seekForce = seekForce.Truncate(config.SeekForce);
-                    seekForce /= Mass;
+                    seekForce /= config.EnemyMass;
                 }
             }
         }
 
         SteeringForce = seekForce + separationForce;
         //SteeringForce = SteeringForce.Truncate(MaxForce);
-        //SteeringForce /= Mass;
+        //SteeringForce /= config.Mass;
     }
 }

@@ -1,7 +1,7 @@
 ﻿
 using UnityEngine;
 
-public class Zone : MonoBehaviour
+public class WalkZone : MonoBehaviour
 {
     public bool Obstacle;
 

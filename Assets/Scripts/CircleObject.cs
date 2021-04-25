@@ -4,13 +4,9 @@ using UnityEngine.UI;
 
 public class CircleObject : MonoBehaviour
 {
-    public static float MaxVelocity = 300;
     
-    public static float MaxSpeed = 300; // pixels per seconds
     public static float Inertness = 1; // time to full stop 
-    
-    public static float Mass = 3;
-
+   
     public float Radius;
     public Vector2 Position;
     public Vector2 Velocity;
@@ -42,7 +38,7 @@ public class CircleObject : MonoBehaviour
     {
         SteeringForce *= Random.Range(0.95f, 1.05f);
 
-        Velocity = (Velocity + SteeringForce * Time.deltaTime).Truncate(MaxSpeed);
+        Velocity = (Velocity + SteeringForce * Time.deltaTime).Truncate(Config.Instance.MaxEnemySpeed);
         Position += Velocity * Time.deltaTime;
     }
 }
