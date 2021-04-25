@@ -23,6 +23,16 @@ public class Config : MonoBehaviour
 
     public ShadowMode ShadowMode;
 
+
+    public CircleObject HeroPrefab;
+    public CircleObject GnomePrefab;
+    public CircleObject ObstaclePrefab;
+    public CircleObject WhiteEnemyPrefab;
+    public CircleObject YellowEnemyPrefab;
+    public CircleObject RedEnemyPrefab;
+    public CircleObject GreenEnemyPrefab;
+
+
     public void Start()
     {
         Instance = this;

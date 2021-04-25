@@ -17,8 +17,6 @@ public class CircleObject : MonoBehaviour
     
     public virtual void Start()
     {
-        Position = transform.position;
-
         Shadow = new GameObject("Gizmo").AddComponent<Shadow>();
         Shadow.transform.parent = GameObject.Find("Shadows").transform;
         Shadow.SetCircleObject(this);

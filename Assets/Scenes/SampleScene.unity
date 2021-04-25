@@ -1076,6 +1076,13 @@ MonoBehaviour:
   EnemyRunSheet:
   - {fileID: 21300000, guid: 4e2b8c7e93e719b4cace0557c45cccbb, type: 3}
   ShadowMode: 0
+  HeroPrefab: {fileID: 636643075}
+  GnomePrefab: {fileID: 1051396344}
+  ObstaclePrefab: {fileID: 551313462}
+  WhiteEnemyPrefab: {fileID: 482920540}
+  YellowEnemyPrefab: {fileID: 240871525}
+  RedEnemyPrefab: {fileID: 1613068793}
+  GreenEnemyPrefab: {fileID: 1792651712}
 --- !u!1 &352987502
 GameObject:
   m_ObjectHideFlags: 0
@@ -1808,7 +1815,6 @@ GameObject:
   - component: {fileID: 636643072}
   - component: {fileID: 636643074}
   - component: {fileID: 636643075}
-  - component: {fileID: 636643073}
   m_Layer: 5
   m_Name: Hero
   m_TagString: Untagged
@@ -1844,18 +1850,6 @@ RectTransform:
   m_AnchoredPosition: {x: -814, y: -93}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &636643073
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 636643071}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 429fa92d064747e4297228cc5787601c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!222 &636643074
 CanvasRenderer:
   m_ObjectHideFlags: 0
