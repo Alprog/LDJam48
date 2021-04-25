@@ -5,12 +5,11 @@ public class CircleManager : MonoBehaviour
 {
     void FixedUpdate()
     {
-        var circles = GameObject.FindObjectsOfType<CircleObject>();      
-        foreach (var circle in circles)
+        foreach (var circle in CircleObject.All)
         {
-            circle.CalculateVelocity(circles);
+            circle.CalculateVelocity();
         }
-        foreach (var circle in circles)
+        foreach (var circle in CircleObject.All)
         {
             circle.ApplyMotion();
         }

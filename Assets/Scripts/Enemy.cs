@@ -12,14 +12,14 @@ public class Enemy : Character
         BodyAnimation.Sheet = Config.Instance.EnemyRunSheet;
     }
 
-    public override void CalculateVelocity(CircleObject[] circleObjects)
+    public override void CalculateVelocity()
     {
         var config = Config.Instance;
 
         var seekForce = Vector2.zero;
         var separationForce = Vector2.zero;
 
-        foreach (var circle in circleObjects)
+        foreach (var circle in CircleObject.All)
         {
             if (circle == this)
             {
@@ -30,10 +30,10 @@ public class Enemy : Character
                 var delta = this.Position - circle.Position;
                 var distance = delta.magnitude - Radius - circle.Radius;
                 distance = Mathf.Max(0, distance);
-                if (distance < config.SeparateDistance)
+                if (distance < EnemyConfig.AvoidDistance)
                 {
-                    var r = distance / config.SeparateDistance;
-                    separationForce += delta.normalized * Mathf.Lerp(config.AvoidForce, 0, r * r);
+                    var r = distance / EnemyConfig.AvoidDistance;
+                    separationForce += delta.normalized * Mathf.Lerp(EnemyConfig.AvoidForce, 0, r * r);
                 }
 
                 if (circle is Hero)
@@ -42,7 +42,7 @@ public class Enemy : Character
                     var desiredVelocity = (targetPosition - Position).normalized * EnemyConfig.MaxSpeed;
                     seekForce = desiredVelocity - Velocity;
 
-                    seekForce = seekForce.Truncate(config.SeekForce);
+                    seekForce = seekForce.Truncate(EnemyConfig.SeekForce);
                     seekForce /= EnemyConfig.Mass;
                 }
             }

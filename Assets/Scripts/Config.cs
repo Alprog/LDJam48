@@ -7,11 +7,6 @@ public class Config : MonoBehaviour
     public static Config Instance;
 
     public float HeroSpeed = 5;
-
-    public float SeekForce = 300;
-    public float SeparateDistance = 100;
-    public float AvoidForce = 1000;
-
     public float VerticalScale = 1;
 
     public Sprite CircleSprite;
