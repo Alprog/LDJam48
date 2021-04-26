@@ -34,6 +34,8 @@ public class Config : MonoBehaviour
     public CircleObject DrillCarPrefab;
     public CircleObject BlueBulletPrefab;
     public CircleObject RedBulletPrefab;
+    public CircleObject GoldPrefab;
+    public CircleObject CoalPrefab;
 
     public void Start()
     {

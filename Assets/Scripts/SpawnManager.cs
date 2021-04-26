@@ -23,6 +23,9 @@ public class SpawnManager : MonoBehaviour
         SpawnAtRandomFreePlace(Config.Instance.HeroPrefab);
 
         for (int i = 0; i < Stage.ObstacleCount; i++) SpawnAtRandomFreePlace(Config.Instance.ObstaclePrefab);
+        for (int i = 0; i < Stage.GoldCount; i++) SpawnAtRandomFreePlace(Config.Instance.GoldPrefab);
+        for (int i = 0; i < Stage.CoalCount; i++) SpawnAtRandomFreePlace(Config.Instance.CoalPrefab);
+        for (int i = 0; i < Stage.GnomeCount; i++) SpawnAtRandomFreePlace(Config.Instance.GnomePrefab);
     }
 
     public void Update()
