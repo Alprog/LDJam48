@@ -7,7 +7,10 @@ public class Bullet : CircleObject
     public float DelayTime = 0.1f;
     public Vector2 Direction;
     public float CollideDamage;
-    
+
+    public int FractionCount = 10;
+    public float Range = 90;
+
     public override void PerformLogic()
     {
         Velocity = Direction * Speed;

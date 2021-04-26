@@ -20,8 +20,7 @@ public class Config : MonoBehaviour
     public List<Sprite> EnemyRunSheet;
 
     public ShadowMode ShadowMode;
-
-
+    
     public CircleObject HeroPrefab;
     public CircleObject GnomePrefab;
     public CircleObject ObstaclePrefab;

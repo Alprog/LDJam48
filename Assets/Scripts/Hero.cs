@@ -31,24 +31,30 @@ public class Hero : Character
         {
             if (Input.GetKeyDown(KeyCode.Mouse1))
             {
-                var baseAngle = Mathf.Atan2(WatchDirection.y, WatchDirection.x);
-                for (int i = -4; i <= 4; i++)
-                {
-                    var bullet = SpawnManager.Instance.Spawn(Config.Instance.RedBulletPrefab, Position) as Bullet;
-                    var bulletAngle = baseAngle + Mathf.PI / 16 * i;
-                    bullet.Direction = new Vector2(Mathf.Cos(bulletAngle), Mathf.Sin(bulletAngle));
-                    ShotDelay = bullet.DelayTime;
-                }
+                Shot(Config.Instance.RedBulletPrefab as Bullet);
             }
             else if (Input.GetKey(KeyCode.Mouse0))
             {
-                var bullet = SpawnManager.Instance.Spawn(Config.Instance.BlueBulletPrefab, Position) as Bullet;
-                bullet.Direction = WatchDirection;
-                ShotDelay = bullet.DelayTime;
+                Shot(Config.Instance.BlueBulletPrefab as Bullet);
             }
         }
     }
     
+    public void Shot(Bullet bulletPrefab)
+    {
+        var semiRange = bulletPrefab.Range / 2 * Mathf.Deg2Rad;
+        var baseAngle = Mathf.Atan2(WatchDirection.y, WatchDirection.x);
+        var count = bulletPrefab.FractionCount;
+        for (int i = 0; i < count; i++)
+        {
+            var bullet = SpawnManager.Instance.Spawn(bulletPrefab, Position) as Bullet;
+            var k = count > 1 ? (float)i / (count - 1) : 1;
+            var bulletAngle = Mathf.Lerp(baseAngle - semiRange, baseAngle + semiRange, k);
+            bullet.Direction = new Vector2(Mathf.Cos(bulletAngle), Mathf.Sin(bulletAngle));   
+        }
+        ShotDelay = bulletPrefab.DelayTime;
+    }
+
     public override void PerformLogic()
     {
         var worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
