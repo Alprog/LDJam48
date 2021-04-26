@@ -94,8 +94,7 @@ public class Hero : Character
     {
         ShotDelay -= Time.deltaTime;
         if (ShotDelay <= 0)
-        {
-         
+        {         
             if (Input.GetKeyDown(KeyCode.Mouse1))
             {
                 ShotGun.pitch = Random.Range(0.5f, 0.8f);
@@ -115,22 +114,20 @@ public class Hero : Character
     public void CheckInteractive()
     {
         InteractiveObject = null;
+        var curentPriority = 0;
         foreach (var circle in CircleObject.All)
         {
-            if (circle != this && circle.Type.IsInteractive())
+            if (circle != this)
             {
-                var delta = this.Position - circle.Position;
-                var distance = delta.magnitude - Radius - circle.Radius;
-                if (distance < Config.Instance.InteractiveDistance)
+                var priority = GetInteractivePriority(circle);
+                if (curentPriority < priority)
                 {
-                    if (circle.Type == CircleType.Gnome && GrabbedGnome == null)
+                    var delta = this.Position - circle.Position;
+                    var distance = delta.magnitude - Radius - circle.Radius;
+                    if (distance < Config.Instance.InteractiveDistance)
                     {
                         InteractiveObject = circle;
-                        break; // gnome is always in priority!
-                    }
-                    else if (circle.Type == CircleType.DrillCar)
-                    {
-                        InteractiveObject = circle;
+                        curentPriority = priority;
                     }
                 }
             }
@@ -144,11 +141,41 @@ public class Hero : Character
                 {
                     GrabeGnome(gnome);
                 }
+                else if (InteractiveObject is Resource resource)
+                {
+                    var newGnome = PlaceGnomeAt(resource.Position + new Vector2(0, -1));
+                    newGnome.StartMining(resource);
+                }
             }
             else
             {
-                TryPlaceGnome();
+                FreePlaceGnome();
             }
+        }
+    }
+
+    private int GetInteractivePriority(CircleObject circle)
+    {
+        switch (circle.Type)
+        {
+            case CircleType.Gnome:
+                return GrabbedGnome == null ? 3 : 0;
+
+            case CircleType.DrillCar:
+                return 2;
+
+            case CircleType.Resource:
+                if (GrabbedGnome != null)
+                {
+                    if ((circle as Resource).CurrentGnome == null)
+                    {
+                        return 1;
+                    }
+                }
+                return 0;
+
+            default:
+                return 0;
         }
     }
 
@@ -158,22 +185,28 @@ public class Hero : Character
         gnome.SilentRemove();
     }
 
-    private bool TryPlaceGnome()
+    private Gnome FreePlaceGnome()
     {
         if (GrabbedGnome != null)
         {
             var config = Config.Instance;
             var desiredDistance = Radius + config.GnomePrefab.Radius + config.InteractiveDistance / 2;
             var desiredPosition = Position + WatchDirection * desiredDistance;
-
-            var gnome = SpawnManager.Instance.Spawn(config.GnomePrefab, desiredPosition) as Gnome;
-            if (gnome != null)
-            {
-                gnome.SetData(GrabbedGnome);
-                GrabbedGnome = null;
-            }
+            return PlaceGnomeAt(desiredPosition);
         }
-        return false;
+        return null;
+    }
+
+    private Gnome PlaceGnomeAt(Vector2 position)
+    {
+        if (GrabbedGnome != null)
+        {
+            var gnome = SpawnManager.Instance.Spawn(Config.Instance.GnomePrefab, position) as Gnome;
+            gnome.SetData(GrabbedGnome);
+            GrabbedGnome = null;
+            return gnome;
+        }
+        return null;
     }
 
     public void Shot(Bullet bulletPrefab)

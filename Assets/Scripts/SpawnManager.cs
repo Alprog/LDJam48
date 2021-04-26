@@ -30,12 +30,13 @@ public class SpawnManager : MonoBehaviour
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1)) SpawnEnemy(Config.Instance.WhiteEnemyPrefab);
-        if (Input.GetKeyDown(KeyCode.Alpha2)) SpawnEnemy(Config.Instance.YellowEnemyPrefab);
-        if (Input.GetKeyDown(KeyCode.Alpha3)) SpawnEnemy(Config.Instance.RedEnemyPrefab);
-        if (Input.GetKeyDown(KeyCode.Alpha4)) SpawnEnemy(Config.Instance.GreenEnemyPrefab);
-        if (Input.GetKeyDown(KeyCode.Alpha5)) SpawnAtRandomFreePlace(Config.Instance.ObstaclePrefab);
-        if (Input.GetKeyDown(KeyCode.Alpha6)) SpawnAtRandomFreePlace(Config.Instance.GnomePrefab);
+        // cheats
+        // if (Input.GetKeyDown(KeyCode.Alpha1)) SpawnEnemy(Config.Instance.WhiteEnemyPrefab);
+        // if (Input.GetKeyDown(KeyCode.Alpha2)) SpawnEnemy(Config.Instance.YellowEnemyPrefab);
+        // if (Input.GetKeyDown(KeyCode.Alpha3)) SpawnEnemy(Config.Instance.RedEnemyPrefab);
+        // if (Input.GetKeyDown(KeyCode.Alpha4)) SpawnEnemy(Config.Instance.GreenEnemyPrefab);
+        // if (Input.GetKeyDown(KeyCode.Alpha5)) SpawnAtRandomFreePlace(Config.Instance.ObstaclePrefab);
+        // if (Input.GetKeyDown(KeyCode.Alpha6)) SpawnAtRandomFreePlace(Config.Instance.GnomePrefab);
 
         DangerLevel += Stage.DangerGrowSpeed * Time.deltaTime;
         DangerPoints += DangerLevel * Time.deltaTime;

@@ -13,8 +13,8 @@ public class Menu : MonoBehaviour
 
     public void FixedUpdate()
     {
-        GoldLabel.text = Data.Gold.ToString();
-        CoalLabel.text = Data.Coal.ToString();
+        GoldLabel.text = Mathf.FloorToInt(Data.Gold).ToString();
+        CoalLabel.text = Mathf.FloorToInt(Data.Coal).ToString();
         GnomeLabel.text = "x" + Data.GnomeDatas.Count;
         if (Hero.Instance != null)
         {
