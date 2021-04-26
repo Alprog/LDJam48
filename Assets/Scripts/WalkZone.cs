@@ -47,28 +47,38 @@ public class WalkZone : MonoBehaviour
         return true;        
     }
 
-    public bool CollideAny(CircleObject circle, bool includePassable = false)
+    public bool CollideAny(CircleObject circle, System.Func<CircleObject, bool> filter = null)
     {
-        return CollideAny(circle.Position, circle.Radius, circle);
+        return CollideAny(circle.Position, circle.Radius, circle, filter);
     }
 
-    public bool CollideAny(Vector2 position, float radius, CircleObject except, bool includePassable = true)
+    public bool CollideAny(Vector2 position, float radius, CircleObject except, System.Func<CircleObject, bool> filter = null)
+    {
+        return GetCollider(position, radius, except, filter) != null;
+    }
+
+    public bool GetCollider(CircleObject circle, System.Func<CircleObject, bool> filter = null)
+    {
+        return GetCollider(circle.Position, circle.Radius, circle, filter);
+    }
+
+    public CircleObject GetCollider(Vector2 position, float radius, CircleObject except, System.Func<CircleObject, bool> filter = null)
     {
         foreach (var circle in CircleObject.All)
         {
             if (circle != except)
             {
-                if (includePassable || !circle.Type.IsPassable())
+                if (filter == null || filter(circle))
                 {
                     var distance = (position - circle.Position).magnitude;
                     if (distance < radius + circle.Radius)
                     {
-                        return true;
+                        return circle;
                     }
                 }
             }
         }
 
-        return false;
+        return null;
     }
 }

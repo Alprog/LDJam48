@@ -41,36 +41,36 @@ public class SpawnManager : MonoBehaviour
         if (DangerPoints >= wavePrice)
         {
             DangerPoints -= wavePrice;
+            Wave = Stage.SelectWave();
             for (int i = 0; i < Wave.White; i++) SpawnEnemy(Config.Instance.WhiteEnemyPrefab);
             for (int i = 0; i < Wave.Yellow; i++) SpawnEnemy(Config.Instance.YellowEnemyPrefab);
             for (int i = 0; i < Wave.Red; i++) SpawnEnemy(Config.Instance.RedEnemyPrefab);
             for (int i = 0; i < Wave.Green; i++) SpawnEnemy(Config.Instance.GreenEnemyPrefab);
-            Wave = Stage.SelectWave();
         }
     }
 
-    public void SpawnAtRandomFreePlace(CircleObject prefab)
+    public CircleObject SpawnAtRandomFreePlace(CircleObject prefab)
     {
         for (int i = 0; i < SpawnAttempts; i++)
         {
             var point = WalkZone.Instance.GetRandomPoint(prefab.Radius);
-            if (!WalkZone.Instance.CollideAny(point, prefab.Radius, null, true))
+            if (!WalkZone.Instance.CollideAny(point, prefab.Radius, null))
             {
-                Spawn(prefab, point);
-                return;
+                return Spawn(prefab, point);
             }
         }
 
         Debug.LogError("Can't spawn " + prefab.name);
+        return null;
     }
 
-    public void SpawnEnemy(CircleObject prefab)
+    public CircleObject SpawnEnemy(CircleObject prefab)
     {
         var point = WalkZone.Instance.GetRandomEnemyPoint(prefab.Radius);
-        Spawn(prefab, point);
+        return Spawn(prefab, point);
     }
 
-    public void Spawn(CircleObject prefab, Vector2 point)
+    public CircleObject Spawn(CircleObject prefab, Vector2 point)
     {
         var instance = GameObject.Instantiate(prefab);
         instance.name = prefab.name;
@@ -79,5 +79,6 @@ public class SpawnManager : MonoBehaviour
         instance.Position = point;
         instance.transform.position = new Vector2(point.x, point.y * Config.Instance.VerticalScale);
         instance.Init();
+        return instance;
     }
 }

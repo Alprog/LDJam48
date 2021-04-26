@@ -16,7 +16,7 @@ public class Aim : MonoBehaviour
 
     public void Update()
     {
-        var direction = Hero.Instance.Direction;
+        var direction = Hero.Instance.WatchDirection;
         Image.enabled = direction.x == X && direction.y == Y;
     }
 }

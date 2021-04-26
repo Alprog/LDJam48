@@ -5,8 +5,10 @@ public class Hero : Character
 {
     public static Hero Instance;
 
-    public Vector2 Direction = Vector2.right;
+    public Vector2 WatchDirection = Vector2.right;
     public bool XMirror = false;
+
+    public float ShotDelay = 0;
 
     public override void Init()
     {
@@ -19,24 +21,45 @@ public class Hero : Character
     {
         base.FixedUpdate();
         BodyAnimation.GetComponent<RectTransform>().localScale = new Vector3(XMirror ? -1 : 1, 1, 1);
+        CheckShot();
+        ShotDelay -= Time.deltaTime;
     }
-
-    public override void PerformLogic()
+    
+    public void CheckShot()
     {
-        var direction = Vector2.zero;
-        if (Input.GetKey(KeyCode.D)) direction.x += 1;
-        if (Input.GetKey(KeyCode.A)) direction.x -= 1;
-        if (Input.GetKey(KeyCode.W)) direction.y += 1;
-        if (Input.GetKey(KeyCode.S)) direction.y -= 1;
-        if (direction != Vector2.zero)
+        if (ShotDelay <= 0)
         {
-            this.Direction = direction;
-            if (direction.x != 0)
+            if (Input.GetKey(KeyCode.Mouse0))
             {
-                XMirror = direction.x < 0;
+                var bullet = SpawnManager.Instance.Spawn(Config.Instance.BlueBulletPrefab, Position) as Bullet;
+                bullet.Direction = WatchDirection;
+                ShotDelay = bullet.DelayTime;
             }
         }
-        Velocity = direction * Config.Instance.HeroSpeed;
+    }
+    
+    public override void PerformLogic()
+    {
+        var worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        var mousePosition = (Vector2)Hero.Instance.transform.parent.worldToLocalMatrix.MultiplyPoint(worldPosition);
+        mousePosition.y /= Config.Instance.VerticalScale;
+
+        var watchDirection = (mousePosition - Position).normalized;
+        if (watchDirection != Vector2.zero)
+        {
+            this.WatchDirection = watchDirection;
+            if (watchDirection.x != 0)
+            {
+                XMirror = watchDirection.x < 0;
+            }
+        }
+
+        var moveDirection = Vector2.zero;
+        if (Input.GetKey(KeyCode.D)) moveDirection.x += 1;
+        if (Input.GetKey(KeyCode.A)) moveDirection.x -= 1;
+        if (Input.GetKey(KeyCode.W)) moveDirection.y += 1;
+        if (Input.GetKey(KeyCode.S)) moveDirection.y -= 1;
+        Velocity = moveDirection * Config.Instance.HeroSpeed;
     }
 
     public override void ApplyMotion()
@@ -54,7 +77,7 @@ public class Hero : Character
         {
             return false;
         }
-        if (WalkZone.Instance.CollideAny(position, Radius, this))
+        if (WalkZone.Instance.CollideAny(position, Radius, this, (c) => !c.Type.IsPassable()))
         {
             return false;
         }
