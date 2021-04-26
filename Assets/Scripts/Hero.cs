@@ -14,6 +14,7 @@ public class Hero : Character
     public CircleObject InteractiveObject;
     public AudioSource ShotSound;
     public AudioSource ShotGun;
+    public AudioSource StepSound;
 
     public override void Init()
     {
