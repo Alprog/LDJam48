@@ -8,9 +8,9 @@ public class Hero : Character
     public Vector2 Direction = Vector2.right;
     public bool XMirror = false;
 
-    public override void Start()
+    public override void Init()
     {
-        base.Start();
+        base.Init();
         Instance = this;
         BodyAnimation.Sheet = Config.Instance.WhiteIdleSheet;
     }
@@ -21,7 +21,7 @@ public class Hero : Character
         BodyAnimation.GetComponent<RectTransform>().localScale = new Vector3(XMirror ? -1 : 1, 1, 1);
     }
 
-    public override void CalculateVelocity()
+    public override void PerformLogic()
     {
         var direction = Vector2.zero;
         if (Input.GetKey(KeyCode.D)) direction.x += 1;
@@ -60,5 +60,11 @@ public class Hero : Character
         }
 
         return true;
+    }
+
+    public override void Die()
+    {
+        SpawnCorpse(Config.Instance.BloodSprite);
+        base.Die();
     }
 }

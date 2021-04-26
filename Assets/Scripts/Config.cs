@@ -7,10 +7,13 @@ public class Config : MonoBehaviour
     public static Config Instance;
 
     public float HeroSpeed = 5;
+    public float HeroPriorityK = 2;
     public float VerticalScale = 1;
 
     public Sprite CircleSprite;
     public Sprite ShadowSprite;
+    public Sprite BloodSprite;
+    public Sprite SlimeSprite;
 
     public List<Sprite> WhiteIdleSheet;
     public List<Sprite> GnomeIdleSheet;

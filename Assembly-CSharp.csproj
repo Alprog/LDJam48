@@ -83,6 +83,7 @@
     <Compile Include="Assets\Scripts\Gnome.cs" />
     <Compile Include="Assets\Scripts\Hero.cs" />
     <Compile Include="Assets\Scripts\MainMenu.cs" />
+    <Compile Include="Assets\Scripts\Menu.cs" />
     <Compile Include="Assets\Scripts\Prefabs.cs" />
     <Compile Include="Assets\Scripts\Shadow.cs" />
     <Compile Include="Assets\Scripts\ShadowMode.cs" />

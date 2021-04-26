@@ -3,9 +3,9 @@ public class Character : CircleObject
 {
     public Animation BodyAnimation;
 
-    public override void Start()
+    public override void Init()
     {
-        base.Start();
+        base.Init();
         BodyAnimation = GetComponentInChildren<Animation>();
     }
 }
