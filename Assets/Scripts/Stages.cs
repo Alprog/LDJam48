@@ -6,7 +6,7 @@ public static class Stages
     public static Stage Current;
 
     public static Stage Normal = new Stage(
-        coal: 2, gold: 2, obstacle: 2, gnome: 1,
+        coal: 4, gold: 0, obstacle: 2, gnome: 0,
         dangerStartLevel: 10,
         dangerGrowSpeed: 0.1f,
         waves: new WaveList()

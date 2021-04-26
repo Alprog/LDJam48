@@ -39,7 +39,14 @@ public class Hero : Character
         }
         else
         {
-            return Config.Instance.WhiteIdleSheet;
+            if (Velocity != Vector2.zero)
+            {
+                return Config.Instance.WhiteRunSheet;
+            }
+            else
+            {
+                return Config.Instance.WhiteIdleSheet;
+            }           
         }
     }
 
@@ -97,12 +104,15 @@ public class Hero : Character
         {         
             if (Input.GetKeyDown(KeyCode.Mouse1))
             {
-                ShotGun.pitch = Random.Range(0.5f, 0.8f);
-                ShotGun.Play();
-                Shot(Config.Instance.RedBulletPrefab as Bullet);
-     
+                if (Data.RMBShots > 0)
+                {
+                    Data.RMBShots--;
+                    ShotGun.pitch = Random.Range(0.5f, 0.8f);
+                    ShotGun.Play();
+                    Shot(Config.Instance.RedBulletPrefab as Bullet);
+                }
             }
-            else if (Input.GetKey(KeyCode.Mouse0))
+            if (Input.GetKey(KeyCode.Mouse0))
             {
                 ShotSound.pitch = Random.Range(0.6f,1f);
                 ShotSound.Play();
@@ -133,6 +143,18 @@ public class Hero : Character
             }
         }
 
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (InteractiveObject != null)
+            {
+                if (InteractiveObject is DrillCar drill)
+                {
+                    base.Die(); // silent
+                    drill.Go();
+                }
+            }
+        }
+
         if (Input.GetKeyDown(KeyCode.E))
         {
             if (InteractiveObject != null)
@@ -145,6 +167,20 @@ public class Hero : Character
                 {
                     var newGnome = PlaceGnomeAt(resource.Position + new Vector2(0, -1));
                     newGnome.StartMining(resource);
+                }
+                else if (InteractiveObject is DrillCar drill)
+                {
+                    if (GrabbedGnome != null)
+                    {
+                        Data.GnomeDatas.Add(GrabbedGnome);
+                        GrabbedGnome = null;
+                    }
+                    else if (Data.GnomeDatas.Count > 0)
+                    {
+                        var index = Data.GnomeDatas.Count - 1;
+                        GrabbedGnome = Data.GnomeDatas[index];
+                        Data.GnomeDatas.RemoveAt(index);
+                    }
                 }
             }
             else
