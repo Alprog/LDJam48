@@ -13,6 +13,7 @@ public class Hero : Character
     public GnomeData GrabbedGnome;
     public CircleObject InteractiveObject;
     public AudioSource ShotSound;
+    public AudioSource ShotGun;
 
     public override void Init()
     {
@@ -96,12 +97,14 @@ public class Hero : Character
          
             if (Input.GetKeyDown(KeyCode.Mouse1))
             {
+                ShotGun.pitch = Random.Range(0.5f, 0.8f);
+                ShotGun.Play();
                 Shot(Config.Instance.RedBulletPrefab as Bullet);
      
             }
             else if (Input.GetKey(KeyCode.Mouse0))
             {
-                ShotSound.pitch = Random.Range(0.5f,1f);
+                ShotSound.pitch = Random.Range(0.6f,1f);
                 ShotSound.Play();
                 Shot(Config.Instance.BlueBulletPrefab as Bullet);
             }
