@@ -20,16 +20,14 @@ public class Hero : Character
         BodyAnimation.Sheet = Config.Instance.WhiteIdleSheet;
     }
 
-    public override void FixedUpdate()
+    public void Update()
     {
-        base.FixedUpdate();
         BodyAnimation.GetComponent<RectTransform>().localScale = new Vector3(XMirror ? -1 : 1, 1, 1);
         BodyAnimation.Sheet = GetCurrentSheet();
         CheckShot();
         CheckInteractive();
-        ShotDelay -= Time.deltaTime;
     }
-  
+
     private List<Sprite> GetCurrentSheet()
     {
         if (GrabbedGnome != null)
@@ -91,6 +89,7 @@ public class Hero : Character
 
     public void CheckShot()
     {
+        ShotDelay -= Time.deltaTime;
         if (ShotDelay <= 0)
         {
             if (Input.GetKeyDown(KeyCode.Mouse1))
@@ -115,8 +114,15 @@ public class Hero : Character
                 var distance = delta.magnitude - Radius - circle.Radius;
                 if (distance < Config.Instance.InteractiveDistance)
                 {
-                    InteractiveObject = circle;
-                    break;
+                    if (circle.Type == CircleType.Gnome && GrabbedGnome == null)
+                    {
+                        InteractiveObject = circle;
+                        break; // gnome is always in priority!
+                    }
+                    else if (circle.Type == CircleType.DrillCar)
+                    {
+                        InteractiveObject = circle;
+                    }
                 }
             }
         }
@@ -132,7 +138,7 @@ public class Hero : Character
             }
             else
             {
-
+                TryPlaceGnome();
             }
         }
     }
@@ -141,6 +147,24 @@ public class Hero : Character
     {
         GrabbedGnome = gnome.ExtractGnomeData();
         gnome.SilentRemove();
+    }
+
+    private bool TryPlaceGnome()
+    {
+        if (GrabbedGnome != null)
+        {
+            var config = Config.Instance;
+            var desiredDistance = Radius + config.GnomePrefab.Radius + config.InteractiveDistance / 2;
+            var desiredPosition = Position + WatchDirection * desiredDistance;
+
+            var gnome = SpawnManager.Instance.Spawn(config.GnomePrefab, desiredPosition) as Gnome;
+            if (gnome != null)
+            {
+                gnome.SetData(GrabbedGnome);
+                GrabbedGnome = null;
+            }
+        }
+        return false;
     }
 
     public void Shot(Bullet bulletPrefab)

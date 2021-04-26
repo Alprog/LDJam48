@@ -25,7 +25,7 @@ public class SpawnManager : MonoBehaviour
         for (int i = 0; i < Stage.ObstacleCount; i++) SpawnAtRandomFreePlace(Config.Instance.ObstaclePrefab);
     }
 
-    public void FixedUpdate()
+    public void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1)) SpawnEnemy(Config.Instance.WhiteEnemyPrefab);
         if (Input.GetKeyDown(KeyCode.Alpha2)) SpawnEnemy(Config.Instance.YellowEnemyPrefab);
