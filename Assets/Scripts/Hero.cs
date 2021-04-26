@@ -12,6 +12,7 @@ public class Hero : Character
     public float ShotDelay = 0;
     public GnomeData GrabbedGnome;
     public CircleObject InteractiveObject;
+    public AudioSource ShotSound;
 
     public override void Init()
     {
@@ -92,12 +93,16 @@ public class Hero : Character
         ShotDelay -= Time.deltaTime;
         if (ShotDelay <= 0)
         {
+         
             if (Input.GetKeyDown(KeyCode.Mouse1))
             {
                 Shot(Config.Instance.RedBulletPrefab as Bullet);
+     
             }
             else if (Input.GetKey(KeyCode.Mouse0))
             {
+                ShotSound.pitch = Random.Range(0.5f,1f);
+                ShotSound.Play();
                 Shot(Config.Instance.BlueBulletPrefab as Bullet);
             }
         }
