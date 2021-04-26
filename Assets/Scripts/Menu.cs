@@ -1,4 +1,5 @@
 ﻿
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -8,6 +9,7 @@ public class Menu : MonoBehaviour
     public TextMeshProUGUI CoalLabel;
     public TextMeshProUGUI GnomeLabel;
     public TextMeshProUGUI HealthLabel;
+    public TextMeshProUGUI DangerLevelLabel;
 
     public void FixedUpdate()
     {
@@ -18,5 +20,8 @@ public class Menu : MonoBehaviour
         {
             HealthLabel.text = Mathf.Max(0, Mathf.FloorToInt(Hero.Instance.Health)).ToString();
         }
+
+        var spawnManager = SpawnManager.Instance;
+        DangerLevelLabel.text = String.Format("{0}\n{1}", Math.Floor(spawnManager.DangerLevel), Math.Floor(spawnManager.DangerPoints));
     }
 }

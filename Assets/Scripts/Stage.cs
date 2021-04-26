@@ -1,4 +1,5 @@
 ﻿
+using UnityEngine;
 using System.Collections.Generic;
 
 public class Stage
@@ -20,5 +21,29 @@ public class Stage
         this.DangerStartLevel = dangerStartLevel;
         this.DangerGrowSpeed = dangerGrowSpeed;
         this.Waves = waves;
+    }
+
+    public Wave SelectWave()
+    {
+        var totalWeight = 0.0f;
+        foreach (var wave in Waves)
+        {
+            totalWeight += wave.Weight;
+        }
+
+        var refWeight = Random.Range(0, totalWeight);
+
+        totalWeight = 0;
+        foreach (var wave in Waves)
+        {
+            totalWeight += wave.Weight;
+            if (refWeight <= totalWeight)
+            {
+                return wave;
+            }
+        }
+
+        Debug.LogError("Can't select wave");
+        return null;
     }
 }

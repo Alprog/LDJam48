@@ -3,10 +3,12 @@ using WaveList = System.Collections.Generic.List<Wave>;
 
 public static class Stages
 {
+    public static Stage Current;
+
     public static Stage Normal = new Stage(
         coal: 1, gold: 1, obstacle: 2, trader: false,
         dangerStartLevel: 10,
-        dangerGrowSpeed: 0.3f,
+        dangerGrowSpeed: 0.1f,
         waves: new WaveList()
         {
             new Wave(w: 1, y: 0, r: 0, g: 0, weight: 5),

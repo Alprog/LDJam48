@@ -13,6 +13,7 @@ public class Wave
         this.Yellow = y;
         this.Red = r;
         this.Green = g;
+        this.Weight = weight;
     }
 
     public float GetPrice()

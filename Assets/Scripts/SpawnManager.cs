@@ -3,9 +3,29 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    private static int SpawnAttempts = 200;
+    public static SpawnManager Instance;
 
-    public void Update()
+    private const int SpawnAttempts = 200;
+    private Stage Stage;
+    private Wave Wave;
+    public float DangerLevel { get; private set; }
+    public float DangerPoints { get; private set; }
+
+    public void Start()
+    {
+        Instance = this;
+
+        Stage = Stages.Normal;
+        Wave = Stage.SelectWave();
+        DangerLevel = Stage.DangerStartLevel;
+
+        Spawn(Config.Instance.DrillCarPrefab, WalkZone.Instance.GetDrillPoint());
+        SpawnAtRandomFreePlace(Config.Instance.HeroPrefab);
+
+        for (int i = 0; i < Stage.ObstacleCount; i++) SpawnAtRandomFreePlace(Config.Instance.ObstaclePrefab);
+    }
+
+    public void FixedUpdate()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1)) SpawnEnemy(Config.Instance.WhiteEnemyPrefab);
         if (Input.GetKeyDown(KeyCode.Alpha2)) SpawnEnemy(Config.Instance.YellowEnemyPrefab);
@@ -13,13 +33,20 @@ public class SpawnManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha4)) SpawnEnemy(Config.Instance.GreenEnemyPrefab);
         if (Input.GetKeyDown(KeyCode.Alpha5)) SpawnAtRandomFreePlace(Config.Instance.ObstaclePrefab);
         if (Input.GetKeyDown(KeyCode.Alpha6)) SpawnAtRandomFreePlace(Config.Instance.GnomePrefab);
-    }
 
-    public void Start()
-    {
-        Spawn(Config.Instance.DrillCarPrefab, WalkZone.Instance.GetDrillPoint());
+        DangerLevel += Stage.DangerGrowSpeed * Time.deltaTime;
+        DangerPoints += DangerLevel * Time.deltaTime;
 
-        SpawnAtRandomFreePlace(Config.Instance.HeroPrefab);
+        var wavePrice = Wave.GetPrice();
+        if (DangerPoints >= wavePrice)
+        {
+            DangerPoints -= wavePrice;
+            for (int i = 0; i < Wave.White; i++) SpawnEnemy(Config.Instance.WhiteEnemyPrefab);
+            for (int i = 0; i < Wave.Yellow; i++) SpawnEnemy(Config.Instance.YellowEnemyPrefab);
+            for (int i = 0; i < Wave.Red; i++) SpawnEnemy(Config.Instance.RedEnemyPrefab);
+            for (int i = 0; i < Wave.Green; i++) SpawnEnemy(Config.Instance.GreenEnemyPrefab);
+            Wave = Stage.SelectWave();
+        }
     }
 
     public void SpawnAtRandomFreePlace(CircleObject prefab)
