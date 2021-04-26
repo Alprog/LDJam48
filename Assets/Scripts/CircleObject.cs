@@ -13,6 +13,7 @@ public class CircleObject : MonoBehaviour
     public float Radius;
     public Vector2 Position;
     public Vector2 Velocity;
+    public bool HasShadow = true;
 
     protected Vector2 SteeringForce;
 

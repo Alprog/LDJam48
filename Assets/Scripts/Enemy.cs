@@ -36,7 +36,7 @@ public class Enemy : Character
                     separationForce += delta.normalized * Mathf.Lerp(EnemyConfig.AvoidForce, 0, r * r);
                 }
 
-                if (circle is Hero)
+                if (circle.Type == CircleType.Hero)
                 {
                     var targetPosition = circle.Position;
                     var desiredVelocity = (targetPosition - Position).normalized * EnemyConfig.MaxSpeed;

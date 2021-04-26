@@ -26,6 +26,7 @@ public class Config : MonoBehaviour
     public CircleObject YellowEnemyPrefab;
     public CircleObject RedEnemyPrefab;
     public CircleObject GreenEnemyPrefab;
+    public CircleObject DrillCarPrefab;
 
 
     public void Start()

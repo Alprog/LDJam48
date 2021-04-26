@@ -39,5 +39,7 @@ public class Shadow : MonoBehaviour
         }
 
         Image.sprite = config.ShadowMode == ShadowMode.Shadows ? config.ShadowSprite : config.CircleSprite;
+
+        Image.enabled = CircleObject.HasShadow || config.ShadowMode != ShadowMode.Shadows;
     }
 }

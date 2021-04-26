@@ -5,31 +5,33 @@ public class SpawnManager : MonoBehaviour
 {
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1)) Spawn(Config.Instance.WhiteEnemyPrefab);
-        if (Input.GetKeyDown(KeyCode.Alpha2)) Spawn(Config.Instance.YellowEnemyPrefab);
-        if (Input.GetKeyDown(KeyCode.Alpha3)) Spawn(Config.Instance.RedEnemyPrefab);
-        if (Input.GetKeyDown(KeyCode.Alpha4)) Spawn(Config.Instance.GreenEnemyPrefab);
-        if (Input.GetKeyDown(KeyCode.Alpha5)) Spawn(Config.Instance.ObstaclePrefab);
-        if (Input.GetKeyDown(KeyCode.Alpha6)) Spawn(Config.Instance.GnomePrefab);
+        if (Input.GetKeyDown(KeyCode.Alpha1)) SpawnAtRandomPoint(Config.Instance.WhiteEnemyPrefab);
+        if (Input.GetKeyDown(KeyCode.Alpha2)) SpawnAtRandomPoint(Config.Instance.YellowEnemyPrefab);
+        if (Input.GetKeyDown(KeyCode.Alpha3)) SpawnAtRandomPoint(Config.Instance.RedEnemyPrefab);
+        if (Input.GetKeyDown(KeyCode.Alpha4)) SpawnAtRandomPoint(Config.Instance.GreenEnemyPrefab);
+        if (Input.GetKeyDown(KeyCode.Alpha5)) SpawnAtRandomPoint(Config.Instance.ObstaclePrefab);
+        if (Input.GetKeyDown(KeyCode.Alpha6)) SpawnAtRandomPoint(Config.Instance.GnomePrefab);
     }
 
     public void Start()
     {
-        Spawn(Config.Instance.HeroPrefab);
+        Spawn(Config.Instance.DrillCarPrefab, WalkZone.Instance.GetDrillPoint());
+
+        SpawnAtRandomPoint(Config.Instance.HeroPrefab);
     }
 
-    public void Spawn(CircleObject prefab)
+    public void SpawnAtRandomPoint(CircleObject prefab)
     {
-        var point = WalkZone.Instance.GetRandomPoint();
+        Spawn(prefab, WalkZone.Instance.GetRandomPoint());
+    }
 
-        
+    public void Spawn(CircleObject prefab, Vector2 point)
+    {
         var instance = GameObject.Instantiate(prefab);
         instance.name = prefab.name;
         instance.transform.parent = GameObject.Find("SortObjects").transform;
         instance.gameObject.SetActive(true);
-
-        instance.transform.position = point;
-        point.y /= Config.Instance.VerticalScale;
         instance.Position = point;
+        instance.transform.position = new Vector2(point.x, point.y * Config.Instance.VerticalScale);
     }
 }

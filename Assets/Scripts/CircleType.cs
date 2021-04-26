@@ -5,5 +5,6 @@ public enum CircleType
     Gnome,
     Enemy,
     Obstacle,
-    Resource
+    Resource,
+    DrillCar
 }

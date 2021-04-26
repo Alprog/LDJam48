@@ -38,4 +38,23 @@ public class Hero : Character
         }
         Velocity = direction * Config.Instance.HeroSpeed;
     }
+
+    public override void ApplyMotion()
+    {
+        var position = Position + Velocity * Time.deltaTime;
+        if (TestPosition(position))
+        {
+            Position = position;
+        }
+    }
+
+    public bool TestPosition(Vector2 position)
+    {
+        if (!WalkZone.Instance.Contains(position, Radius))
+        {
+            return false;
+        }
+
+        return true;
+    }
 }
