@@ -22,7 +22,7 @@ public class SpawnManager : MonoBehaviour
 
     public void SpawnAtRandomPoint(CircleObject prefab)
     {
-        Spawn(prefab, WalkZone.Instance.GetRandomPoint());
+        Spawn(prefab, WalkZone.Instance.GetRandomPoint(prefab.Radius));
     }
 
     public void Spawn(CircleObject prefab, Vector2 point)

@@ -54,6 +54,10 @@ public class Hero : Character
         {
             return false;
         }
+        if (WalkZone.Instance.CollideAny(position, Radius, this))
+        {
+            return false;
+        }
 
         return true;
     }
