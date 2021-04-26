@@ -10,12 +10,15 @@ public class Config : MonoBehaviour
     public float HeroPriorityK = 2;
     public float VerticalScale = 1;
 
+    public float InteractiveDistance = 15;
+
     public Sprite CircleSprite;
     public Sprite ShadowSprite;
     public Sprite BloodSprite;
     public Sprite SlimeSprite;
     
     public List<Sprite> WhiteIdleSheet;
+    public List<Sprite> WhiteGrabGnomeSheet;
     public List<Sprite> GnomeIdleSheet;
     public List<Sprite> EnemyRunSheet;
 

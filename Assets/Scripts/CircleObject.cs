@@ -67,4 +67,6 @@ public class CircleObject : MonoBehaviour
         corpse.transform.position = transform.position;
         corpse.GetComponent<RectTransform>().sizeDelta = new Vector2(2, 2) * Radius;
     }
+
+    public bool IsCurrentInteractiveObject => Hero.Instance != null && Hero.Instance.InteractiveObject == this;
 }

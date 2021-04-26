@@ -15,7 +15,7 @@ public class Menu : MonoBehaviour
     {
         GoldLabel.text = Data.Gold.ToString();
         CoalLabel.text = Data.Coal.ToString();
-        GnomeLabel.text = "x" + Data.GnomeHealths.Count;
+        GnomeLabel.text = "x" + Data.GnomeDatas.Count;
         if (Hero.Instance != null)
         {
             HealthLabel.text = Mathf.Max(0, Mathf.FloorToInt(Hero.Instance.Health)).ToString();

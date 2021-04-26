@@ -37,4 +37,17 @@ public static class CircleTypeExtension
                 return false;
         }
     }
+
+    public static bool IsInteractive(this CircleType type)
+    {
+        switch (type)
+        {
+            case CircleType.Gnome:
+            case CircleType.DrillCar:
+                return true;
+
+            default:
+                return false;
+        }
+    }
 }

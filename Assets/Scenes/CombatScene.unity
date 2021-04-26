@@ -404,6 +404,8 @@ MonoBehaviour:
   DelayTime: 0.8
   Direction: {x: 0, y: 0}
   CollideDamage: 30
+  FractionCount: 10
+  Range: 90
 --- !u!114 &144708544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1286,6 +1288,7 @@ MonoBehaviour:
   HeroSpeed: 150
   HeroPriorityK: 3
   VerticalScale: 0.66
+  InteractiveDistance: 15
   CircleSprite: {fileID: 21300000, guid: 051d27b1f34f84b4cbde5bd246c4813a, type: 3}
   ShadowSprite: {fileID: 21300000, guid: 692b3e8a4cfd85246ba79c93887ba4c8, type: 3}
   BloodSprite: {fileID: 21300000, guid: b93a52e5814e56547865f43f970173f6, type: 3}
@@ -1299,6 +1302,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: c81fee27a169799428d26e563896f48e, type: 3}
   - {fileID: 21300000, guid: c81fee27a169799428d26e563896f48e, type: 3}
   - {fileID: 21300000, guid: 5f72d081bee96e347a4926028b3c7b45, type: 3}
+  WhiteGrabGnomeSheet:
+  - {fileID: 21300000, guid: 48a0ecae936f59c4599052e1804078e5, type: 3}
   GnomeIdleSheet:
   - {fileID: 21300000, guid: 1c8cab550cbfeb04693da52fe5fda917, type: 3}
   - {fileID: 21300000, guid: 606edcc0b9c001944abc4905e97bb778, type: 3}
@@ -2122,6 +2127,7 @@ MonoBehaviour:
   WatchDirection: {x: 1, y: 0}
   XMirror: 0
   ShotDelay: 0
+  InteractiveObject: {fileID: 0}
 --- !u!1 &736865004
 GameObject:
   m_ObjectHideFlags: 0
@@ -2383,7 +2389,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2, y: 12.2}
+  m_AnchoredPosition: {x: -2, y: 51}
   m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &949483398
@@ -2733,6 +2739,7 @@ MonoBehaviour:
   HasShadow: 1
   BodyAnimation: {fileID: 0}
   HealthLabel: {fileID: 277495820}
+  KeyIcon: {fileID: 949483398}
 --- !u!222 &1051396345
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3082,6 +3089,8 @@ MonoBehaviour:
   DelayTime: 0.1
   Direction: {x: 0, y: 0}
   CollideDamage: 1
+  FractionCount: 1
+  Range: 0
 --- !u!114 &1178101309
 MonoBehaviour:
   m_ObjectHideFlags: 0
