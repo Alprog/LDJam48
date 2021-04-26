@@ -95,6 +95,8 @@
     <Compile Include="Assets\Scripts\Stage.cs" />
     <Compile Include="Assets\Scripts\Stages.cs" />
     <Compile Include="Assets\Scripts\Store.cs" />
+    <Compile Include="Assets\Scripts\Title.cs" />
+    <Compile Include="Assets\Scripts\Tutorial.cs" />
     <Compile Include="Assets\Scripts\Utils.cs" />
     <Compile Include="Assets\Scripts\WalkZone.cs" />
     <Compile Include="Assets\Scripts\Wave.cs" />

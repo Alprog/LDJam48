@@ -27,6 +27,7 @@ public class DrillCar : CircleObject
 
         if (Position.x > 800)
         {
+            CircleObject.Clear();
             SceneManager.LoadScene("Store");
         }
     }
@@ -45,7 +46,9 @@ public class DrillCar : CircleObject
     }
 
     public void Go()
-    {
+    { 
+        Stages.Index++;
+        Data.Coal = 0;
         Moving = true;
         OpenedDoor.enabled = false;
     }

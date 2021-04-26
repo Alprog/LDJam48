@@ -69,4 +69,9 @@ public class CircleObject : MonoBehaviour
     }
 
     public bool IsCurrentInteractiveObject => Hero.Instance != null && Hero.Instance.InteractiveObject == this;
+
+    public static void Clear()
+    {
+        All.Clear();
+    }
 }

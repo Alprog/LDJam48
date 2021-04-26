@@ -16,7 +16,7 @@ public class SpawnManager : MonoBehaviour
     {
         Instance = this;
 
-        Stage = Stages.Normal;
+        Stage = Stages.Levels[Stages.Index];
         Wave = Stage.SelectWave();
         DangerLevel = Stage.DangerStartLevel;
 
