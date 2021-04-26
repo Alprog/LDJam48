@@ -30,11 +30,7 @@ public class Enemy : Character
                 var delta = this.Position - circle.Position;
                 var distance = delta.magnitude - Radius - circle.Radius;
                 distance = Mathf.Max(0, distance);
-                if (distance < EnemyConfig.AvoidDistance)
-                {
-                    var r = distance / EnemyConfig.AvoidDistance;
-                    separationForce += delta.normalized * Mathf.Lerp(EnemyConfig.AvoidForce, 0, r * r);
-                }
+                separationForce += GetAvoidForce(delta, distance);
 
                 if (circle.Type == CircleType.Hero)
                 {
@@ -49,11 +45,17 @@ public class Enemy : Character
         }
 
         SteeringForce = seekForce + separationForce;
-        //SteeringForce = SteeringForce.Truncate(MaxForce);
-        //SteeringForce /= config.Mass;
-
         SteeringForce *= Random.Range(0.95f, 1.05f);
-
         Velocity = (Velocity + SteeringForce * Time.deltaTime).Truncate(EnemyConfig.MaxSpeed);
+    }
+
+    public Vector2 GetAvoidForce(Vector2 direction, float distance)
+    {
+        if (distance < EnemyConfig.AvoidDistance)
+        {
+            var r = distance / EnemyConfig.AvoidDistance;
+            return direction.normalized * Mathf.Lerp(EnemyConfig.AvoidForce, 0, r * r);
+        }
+        return Vector2.zero;
     }
 }
