@@ -12,4 +12,6 @@ public class EnemyConfig : MonoBehaviour
     public float SeekForce = 150;
     public float AvoidDistance = 50;
     public float AvoidForce = 500;
+
+    public float DangerPrice = 1.0f;
 }

@@ -1056,6 +1056,8 @@ MonoBehaviour:
   VerticalScale: 0.66
   CircleSprite: {fileID: 21300000, guid: 051d27b1f34f84b4cbde5bd246c4813a, type: 3}
   ShadowSprite: {fileID: 21300000, guid: 692b3e8a4cfd85246ba79c93887ba4c8, type: 3}
+  BloodSprite: {fileID: 21300000, guid: b93a52e5814e56547865f43f970173f6, type: 3}
+  SlimeSprite: {fileID: 21300000, guid: dde63d54c9372c44284ae7af526a9f3b, type: 3}
   WhiteIdleSheet:
   - {fileID: 21300000, guid: ac2a447ace557e444887ac1b7b7b4694, type: 3}
   - {fileID: 21300000, guid: a06fd85019035d84da444753a57f06e6, type: 3}

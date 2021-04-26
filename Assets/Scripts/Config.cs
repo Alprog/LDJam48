@@ -31,7 +31,6 @@ public class Config : MonoBehaviour
     public CircleObject GreenEnemyPrefab;
     public CircleObject DrillCarPrefab;
 
-
     public void Start()
     {
         Instance = this;

@@ -89,8 +89,11 @@
     <Compile Include="Assets\Scripts\ShadowMode.cs" />
     <Compile Include="Assets\Scripts\SortObjects.cs" />
     <Compile Include="Assets\Scripts\SpawnManager.cs" />
+    <Compile Include="Assets\Scripts\Stage.cs" />
+    <Compile Include="Assets\Scripts\Stages.cs" />
     <Compile Include="Assets\Scripts\Utils.cs" />
     <Compile Include="Assets\Scripts\WalkZone.cs" />
+    <Compile Include="Assets\Scripts\Wave.cs" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
