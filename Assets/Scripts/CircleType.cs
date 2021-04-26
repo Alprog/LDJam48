@@ -16,7 +16,6 @@ public static class CircleTypeExtension
     {
         switch (type)
         {
-            case CircleType.Resource:
             case CircleType.Bullet:
                 return true;
 
@@ -44,6 +43,7 @@ public static class CircleTypeExtension
         {
             case CircleType.Gnome:
             case CircleType.DrillCar:
+            case CircleType.Resource:
                 return true;
 
             default:
