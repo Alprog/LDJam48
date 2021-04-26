@@ -6,6 +6,7 @@ public class SpawnManager : MonoBehaviour
     public static SpawnManager Instance;
 
     private const int SpawnAttempts = 200;
+    private const float SafeOffset = 50;
     private Stage Stage;
     private Wave Wave;
     public float DangerLevel { get; private set; }
@@ -23,9 +24,9 @@ public class SpawnManager : MonoBehaviour
         SpawnAtRandomFreePlace(Config.Instance.HeroPrefab);
 
         for (int i = 0; i < Stage.ObstacleCount; i++) SpawnAtRandomFreePlace(Config.Instance.ObstaclePrefab);
-        for (int i = 0; i < Stage.GoldCount; i++) SpawnAtRandomFreePlace(Config.Instance.GoldPrefab);
-        for (int i = 0; i < Stage.CoalCount; i++) SpawnAtRandomFreePlace(Config.Instance.CoalPrefab);
-        for (int i = 0; i < Stage.GnomeCount; i++) SpawnAtRandomFreePlace(Config.Instance.GnomePrefab);
+        for (int i = 0; i < Stage.GoldCount; i++) SpawnAtRandomFreePlace(Config.Instance.GoldPrefab, SafeOffset);
+        for (int i = 0; i < Stage.CoalCount; i++) SpawnAtRandomFreePlace(Config.Instance.CoalPrefab, SafeOffset);
+        for (int i = 0; i < Stage.GnomeCount; i++) SpawnAtRandomFreePlace(Config.Instance.GnomePrefab, SafeOffset);
     }
 
     public void Update()
@@ -53,11 +54,11 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
-    public CircleObject SpawnAtRandomFreePlace(CircleObject prefab)
+    public CircleObject SpawnAtRandomFreePlace(CircleObject prefab, float safeOffset = 0)
     {
         for (int i = 0; i < SpawnAttempts; i++)
         {
-            var point = WalkZone.Instance.GetRandomPoint(prefab.Radius);
+            var point = WalkZone.Instance.GetRandomPoint(prefab.Radius + safeOffset);
             if (!WalkZone.Instance.CollideAny(point, prefab.Radius, null))
             {
                 return Spawn(prefab, point);
