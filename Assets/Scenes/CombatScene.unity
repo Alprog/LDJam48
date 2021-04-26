@@ -380,7 +380,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -347, y: -103.066956}
-  m_SizeDelta: {x: 22, y: 53}
+  m_SizeDelta: {x: 30.8, y: 74.2}
   m_Pivot: {x: 0.49999997, y: 0.00000029802322}
 --- !u!114 &144708543
 MonoBehaviour:
@@ -396,13 +396,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 6
   Health: 100
-  Radius: 7
+  Radius: 12
   Position: {x: 0, y: 0}
   Velocity: {x: 0, y: 0}
   HasShadow: 1
-  Speed: 1000
+  Speed: 800
+  DelayTime: 0.8
   Direction: {x: 0, y: 0}
-  CollideDamage: 5
+  CollideDamage: 30
 --- !u!114 &144708544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2120,6 +2121,7 @@ MonoBehaviour:
   BodyAnimation: {fileID: 0}
   WatchDirection: {x: 1, y: 0}
   XMirror: 0
+  ShotDelay: 0
 --- !u!1 &736865004
 GameObject:
   m_ObjectHideFlags: 0
@@ -3077,6 +3079,7 @@ MonoBehaviour:
   Velocity: {x: 0, y: 0}
   HasShadow: 1
   Speed: 1000
+  DelayTime: 0.1
   Direction: {x: 0, y: 0}
   CollideDamage: 1
 --- !u!114 &1178101309

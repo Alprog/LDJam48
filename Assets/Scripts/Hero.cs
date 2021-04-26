@@ -29,7 +29,18 @@ public class Hero : Character
     {
         if (ShotDelay <= 0)
         {
-            if (Input.GetKey(KeyCode.Mouse0))
+            if (Input.GetKeyDown(KeyCode.Mouse1))
+            {
+                var baseAngle = Mathf.Atan2(WatchDirection.y, WatchDirection.x);
+                for (int i = -4; i <= 4; i++)
+                {
+                    var bullet = SpawnManager.Instance.Spawn(Config.Instance.RedBulletPrefab, Position) as Bullet;
+                    var bulletAngle = baseAngle + Mathf.PI / 16 * i;
+                    bullet.Direction = new Vector2(Mathf.Cos(bulletAngle), Mathf.Sin(bulletAngle));
+                    ShotDelay = bullet.DelayTime;
+                }
+            }
+            else if (Input.GetKey(KeyCode.Mouse0))
             {
                 var bullet = SpawnManager.Instance.Spawn(Config.Instance.BlueBulletPrefab, Position) as Bullet;
                 bullet.Direction = WatchDirection;
