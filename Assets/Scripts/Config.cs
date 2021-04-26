@@ -18,9 +18,11 @@ public class Config : MonoBehaviour
     public Sprite SlimeSprite;
     
     public List<Sprite> WhiteIdleSheet;
+    public List<Sprite> WhiteRunSheet;
     public List<Sprite> WhiteGrabGnomeSheet;
     public List<Sprite> GnomeIdleSheet;
     public List<Sprite> EnemyRunSheet;
+    public List<Sprite> GnomeMiningSheet;
 
     public ShadowMode ShadowMode;
     

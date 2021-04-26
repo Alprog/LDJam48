@@ -1,4 +1,5 @@
 ﻿
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -32,6 +33,20 @@ public class Gnome : Character
             {
                 Data.Coal += Time.deltaTime;
             }
+        }
+
+        BodyAnimation.Sheet = GetCurrentSheet();
+    }
+
+    private List<Sprite> GetCurrentSheet()
+    {
+        if (MiningResource != null)
+        {
+            return Config.Instance.GnomeMiningSheet;
+        }
+        else
+        {
+            return Config.Instance.GnomeIdleSheet;
         }
     }
 
