@@ -1646,7 +1646,18 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 02ff7eeb1d785224fb959da0d6e0b9f9, type: 3}
   - {fileID: 21300000, guid: 3b8e86870d44a2e4a99dfd5d14c57dae, type: 3}
   WhiteGrabGnomeSheet:
-  - {fileID: 21300000, guid: 48a0ecae936f59c4599052e1804078e5, type: 3}
+  - {fileID: 21300000, guid: a7b65094e30db7d4285e15f331cdd0c6, type: 3}
+  WhiteGrabGnomeRunSheet:
+  - {fileID: 21300000, guid: 46a13049c9475fe479486b93c073ceca, type: 3}
+  - {fileID: 21300000, guid: 32e0fbdf25463e3458902918e292fba6, type: 3}
+  - {fileID: 21300000, guid: a7b65094e30db7d4285e15f331cdd0c6, type: 3}
+  - {fileID: 21300000, guid: 70edd73319eb4a643a1c64ac83b75d1c, type: 3}
+  - {fileID: 21300000, guid: 1380806bd9af6ef4abb1788e1cf2dbfe, type: 3}
+  - {fileID: 21300000, guid: 5cee83c1079b5dd49b857d2e9ece0a07, type: 3}
+  - {fileID: 21300000, guid: 8d4190f6ca56196499b9e98805c48c86, type: 3}
+  - {fileID: 21300000, guid: 03ba070a864a6d648be14a2aad6ea78b, type: 3}
+  - {fileID: 21300000, guid: 582ed00198a5c094f939332dc1a47897, type: 3}
+  - {fileID: 21300000, guid: 8c5a82bf007c9bd4d9334eeeeb7c52b4, type: 3}
   GnomeIdleSheet:
   - {fileID: 21300000, guid: 1c8cab550cbfeb04693da52fe5fda917, type: 3}
   - {fileID: 21300000, guid: 606edcc0b9c001944abc4905e97bb778, type: 3}
@@ -2341,7 +2352,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -132, y: -58}
-  m_SizeDelta: {x: 105, y: 75}
+  m_SizeDelta: {x: 111, y: 109}
   m_Pivot: {x: 0.5, y: 0.30315042}
 --- !u!114 &551313462
 MonoBehaviour:
@@ -2357,10 +2368,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 3
   Health: 100
-  Radius: 45
+  Radius: 35
   Position: {x: 0, y: 0}
   Velocity: {x: 0, y: 0}
-  HasShadow: 1
+  HasShadow: 0
 --- !u!114 &551313463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2380,7 +2391,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 789d3b3af1ccb5c4c9fe52d08da9ee8b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 59856b1a5a85315409ec29875a55e6cd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

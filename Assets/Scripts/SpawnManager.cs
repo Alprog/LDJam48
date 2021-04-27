@@ -21,7 +21,7 @@ public class SpawnManager : MonoBehaviour
         DangerLevel = Stage.DangerStartLevel;
 
         Spawn(Config.Instance.DrillCarPrefab, WalkZone.Instance.GetDrillPoint());
-        SpawnAtRandomFreePlace(Config.Instance.HeroPrefab);
+        Spawn(Config.Instance.HeroPrefab, new Vector2(0, -150));
 
         for (int i = 0; i < Stage.ObstacleCount; i++) SpawnAtRandomFreePlace(Config.Instance.ObstaclePrefab);
         for (int i = 0; i < Stage.GoldCount; i++) SpawnAtRandomFreePlace(Config.Instance.GoldPrefab, SafeOffset);

@@ -35,7 +35,14 @@ public class Hero : Character
     {
         if (GrabbedGnome != null)
         {
-            return Config.Instance.WhiteGrabGnomeSheet;
+            if (Velocity != Vector2.zero)
+            {
+                return Config.Instance.WhiteGrabGnomeRunSheet;
+            }
+            else
+            {
+                return Config.Instance.WhiteGrabGnomeSheet;
+            }
         }
         else
         {
@@ -149,8 +156,11 @@ public class Hero : Character
             {
                 if (InteractiveObject is DrillCar drill)
                 {
-                    base.Die(); // silent
-                    drill.Go();
+                    if (drill.IsReady())
+                    {
+                        base.Die(); // silent
+                        drill.Go();
+                    }
                 }
             }
         }

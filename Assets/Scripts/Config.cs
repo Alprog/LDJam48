@@ -21,6 +21,7 @@ public class Config : MonoBehaviour
     public List<Sprite> WhiteIdleSheet;
     public List<Sprite> WhiteRunSheet;
     public List<Sprite> WhiteGrabGnomeSheet;
+    public List<Sprite> WhiteGrabGnomeRunSheet;
     public List<Sprite> GnomeIdleSheet;
     public List<Sprite> EnemyRunSheet;
     public List<Sprite> GnomeMiningSheet;
