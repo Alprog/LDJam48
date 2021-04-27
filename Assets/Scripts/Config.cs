@@ -9,7 +9,7 @@ public class Config : MonoBehaviour
     public float HeroSpeed = 5;
     public float HeroPriorityK = 2;
     public float VerticalScale = 1;
-    public float NeedCoal = -10;
+    public float NeedCoal = 100;
 
     public float InteractiveDistance = 15;
 
