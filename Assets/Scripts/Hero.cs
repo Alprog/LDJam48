@@ -14,7 +14,11 @@ public class Hero : Character
     public CircleObject InteractiveObject;
     public AudioSource ShotSound;
     public AudioSource ShotGun;
-    public AudioSource StepSound;
+    public AudioSource Up;
+    public AudioSource Down;
+    public AudioSource UpCar;
+    public AudioSource DownCar;
+
 
     public override void Init()
     {
@@ -172,11 +176,15 @@ public class Hero : Character
                 if (InteractiveObject is Gnome gnome)
                 {
                     GrabeGnome(gnome);
+                    Up.pitch = Random.Range(0.1f, 1.8f);
+                    Up.Play();
                 }
                 else if (InteractiveObject is Resource resource)
                 {
                     var newGnome = PlaceGnomeAt(resource.Position + new Vector2(0, -1));
                     newGnome.StartMining(resource);
+                    Down.pitch = Random.Range(0.5f, 0.8f);
+                    Down.Play();
                 }
                 else if (InteractiveObject is DrillCar drill)
                 {
@@ -184,12 +192,17 @@ public class Hero : Character
                     {
                         Data.GnomeDatas.Add(GrabbedGnome);
                         GrabbedGnome = null;
+                        UpCar.pitch = Random.Range(0.5f, 0.8f);
+                        UpCar.Play();
                     }
                     else if (Data.GnomeDatas.Count > 0)
                     {
                         var index = Data.GnomeDatas.Count - 1;
                         GrabbedGnome = Data.GnomeDatas[index];
                         Data.GnomeDatas.RemoveAt(index);
+                        DownCar.pitch = Random.Range(0.5f, 0.8f);
+                        DownCar.Play();
+
                     }
                 }
             }
